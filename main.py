@@ -1,3 +1,4 @@
+import sys
 import pygame
 from pygame import SurfaceType
 from pygame.time import Clock
@@ -24,7 +25,7 @@ def main() -> None:
     AsteroidField()
     x: int = SCREEN_WIDTH / 2
     y: int = SCREEN_HEIGHT / 2
-    Player(x, y)
+    player = Player(x, y)
 
     while True:
         for event in pygame.event.get():
@@ -37,6 +38,11 @@ def main() -> None:
             sprite.draw(screen)
 
         updatable.update(dt)
+
+        for asteroid in asteroids:
+            if asteroid.collides(player):
+                print("Game over!")
+                sys.exit()
 
         pygame.display.flip()
 
