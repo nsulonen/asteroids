@@ -3,6 +3,7 @@ from pygame import SurfaceType
 from pygame.time import Clock
 from player import Player
 from asteroid import Asteroid
+from asteroidfield import AsteroidField
 
 from constants import *
 
@@ -18,7 +19,9 @@ def main() -> None:
 
     Player.containers = (updatable, drawable)
     Asteroid.containers = (asteroids, updatable, drawable)
+    AsteroidField.containers = updatable
 
+    AsteroidField()
     x: int = SCREEN_WIDTH / 2
     y: int = SCREEN_HEIGHT / 2
     Player(x, y)
